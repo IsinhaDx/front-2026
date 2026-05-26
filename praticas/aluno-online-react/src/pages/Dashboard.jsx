@@ -1,125 +1,71 @@
-import { useState } from "react";
+import Menu from "../components/Menu";
+import avatar from "../assets/avatar.svg";
+import cap from "../assets/learn.svg";
 
-const getStatusColor = (status) => {
-  switch (status) {
-    case "Pago":
-      return "text-green-600 font-semibold";
-    case "Em atraso":
-      return "text-red-600 font-semibold";
-    default:
-      return "text-gray-700";
-  }
-};
-
-function Boletos() {
-  const [menuAberto, setMenuAberto] = useState(false);
-
-  const boletos = [
-    { vencimento: "19/01/2026", valor: "500,00", status: "Pago" },
-    { vencimento: "19/02/2026", valor: "500,00", status: "Em atraso" },
-    { vencimento: "19/03/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/04/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/05/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/06/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/07/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/08/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/09/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/10/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/11/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/12/2026", valor: "500,00", status: "A Pagar" },
-    { vencimento: "19/01/2027", valor: "500,00", status: "A Pagar" },
-  ];
-
+function Dashboard({ menu }) {
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-200">
-      {/* BOTÃO MENU MOBILE */}
-      <div className="md:hidden flex justify-end p-4">
-        <button
-          type="button"
-          className="text-xl"
-          onClick={() => setMenuAberto(!menuAberto)}
-        >
-          ☰
-        </button>
-      </div>
+    <div className="flex min-h-screen bg-gray-200">
+      <Menu itensMenu={menu} />
 
-      {/* Sidebar */}
-      <aside
-        className={`
-        bg-gray-100 p-6 w-full md:w-64
-        ${menuAberto ? "block" : "hidden"} md:block
-      `}
-      >
-        <h1 className="text-xl font-bold mb-8 hidden md:block">
-          🎓 Aluno Online
-        </h1>
-
-        <ul className="space-y-4 text-gray-700">
-          <li className="hover:text-black cursor-pointer">Dashboard</li>
-          <li className="hover:text-black cursor-pointer">Notas</li>
-          <li className="hover:text-black cursor-pointer">Faltas</li>
-          <li className="hover:text-black cursor-pointer font-semibold">
-            Boletos
-          </li>
-          <li className="hover:text-black cursor-pointer">Requerimentos</li>
-          <li className="hover:text-black cursor-pointer">Sair</li>
-        </ul>
-      </aside>
-
-      {/* Main */}
-      <main className="flex-1 p-4 md:p-10">
-        {/* HEADER MOBILE */}
-        <div className="flex justify-between items-start mb-4 md:hidden">
-          <h1 className="text-3xl font-bold leading-tight">
-            Meus <br /> Boletos
-          </h1>
-
-          <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white">
-            👤
+      <main className="flex-1 p-6 md:p-10">
+        {/* HEADER */}
+        <div className="flex justify-between items-center mb-6">
+          <div className="flex items-center gap-2">
+            <img src={cap} alt="Quepe" className="w-8 h-8" />
+            <h1 className="text-3xl font-bold text-gray-800">Olá, Aluno!</h1>
           </div>
+
+          <img
+            src={avatar}
+            alt="Avatar"
+            className="w-12 h-12 rounded-full border"
+          />
         </div>
 
-        {/* HEADER DESKTOP */}
-        <div className="hidden md:flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold">Meus Boletos</h2>
-          <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white">
-            👤
+        <h2 className="text-xl font-semibold text-gray-700 mb-8">
+          Bem-vindo ao portal do aluno
+        </h2>
+
+        {/* GRID PRINCIPAL */}
+        <div className="space-y-6 max-w-3xl">
+          {/* MURAL */}
+          <div className="bg-white rounded-lg shadow">
+            <div className="bg-gray-200 px-4 py-2 font-semibold text-gray-700 rounded-t-lg">
+              Mural de Avisos
+            </div>
+            <div className="p-4 text-gray-700 space-y-1">
+              <p>Inscrição para o projeto de extensão</p>
+              <p>Eleição para representante de turma</p>
+            </div>
           </div>
-        </div>
 
-        <h3 className="text-xl md:text-2xl font-semibold mb-4">
-          Histórico de Pagamentos
-        </h3>
+          {/* CALENDÁRIO */}
+          <div className="bg-white rounded-lg shadow">
+            <div className="bg-gray-200 px-4 py-2 font-semibold text-gray-700 rounded-t-lg">
+              Calendário Acadêmico
+            </div>
+            <div className="p-4 text-gray-700 space-y-1">
+              <p>23/02 - Início do período letivo 2026-1</p>
+              <p>25/04 - Prazo final para aplicação da P1</p>
+              <p>23/06 - Prazo final para aplicação da P2</p>
+              <p>04/07 - Fim do período letivo 2026-1</p>
+            </div>
+          </div>
 
-        {/* Tabela */}
-        <div className="bg-white rounded-lg shadow-md overflow-x-auto">
-          <table className="w-full min-w-[400px] text-left text-sm md:text-base">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="p-3">Vencimento</th>
-                <th className="p-3">Valor R$</th>
-                <th className="p-3">Situação</th>
-              </tr>
-            </thead>
-            <tbody>
-              {boletos.map((boleto) => (
-                <tr
-                  key={boleto.vencimento}
-                  className="border-t hover:bg-gray-50"
-                >
-                  <td className="p-3">{boleto.vencimento}</td>
-                  <td className="p-3">{boleto.valor}</td>
-                  <td className={`p-3 ${getStatusColor(boleto.status)}`}>
-                    {boleto.status}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {/* DISCIPLINAS */}
+          <div className="bg-white rounded-lg shadow">
+            <div className="bg-gray-200 px-4 py-2 font-semibold text-gray-700 rounded-t-lg">
+              Minhas Disciplinas
+            </div>
+            <div className="p-4 text-gray-700 space-y-1">
+              <p>BI e Data Warehousing</p>
+              <p>Construção de Frontend</p>
+            </div>
+          </div>
         </div>
       </main>
     </div>
   );
 }
 
-export default Boletos;
+export default Dashboard;
