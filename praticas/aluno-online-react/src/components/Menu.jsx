@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import cap from "../assets/learn.svg";
 
 function Menu() {
@@ -24,7 +23,7 @@ function Menu() {
 }
 
 export default Menu;
-=======
+
 function Menu(){
     return (
         <nav>
@@ -41,4 +40,4 @@ function Menu(){
 }
 
 export default Menu;
->>>>>>> 850cb0932671f7999605115c4d2dbc2bed3bd11a
+
