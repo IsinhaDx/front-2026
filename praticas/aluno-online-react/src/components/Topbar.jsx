@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import avatar from '../assets/avatar.svg'
-
-function Topbar(){
-    return (
-        <header>
-            <h1>Olá, Aluno</h1>
-            <img src={avatar} alt='iamgem do avatar'/>
-        </header>
-    )
-=======
 import './Topbar.css';
 import avatar from '../assets/avatar.svg';
 
@@ -24,7 +13,6 @@ function Topbar() {
       <img src={avatar} alt="imagem do avatar" className="user-avatar" />
     </header>
   );
->>>>>>> 850cb0932671f7999605115c4d2dbc2bed3bd11a
 }
 
 export default Topbar;

@@ -10,12 +10,6 @@
   overflow: hidden;
 }
 
-.semester-card h3 {
-  background-color: var(--cor-card-header);
-  padding: 12px 15px;
-  font-size: 1rem;
-}
-
 .table-responsive {
   overflow-x: auto;
 }
