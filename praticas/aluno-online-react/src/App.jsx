@@ -1,8 +1,6 @@
-<<<<<<< HEAD
-=======
 import Login from "./pages/Login";
 
->>>>>>> 8ec32b9ed36b642e8d8759262aeffa62179f135f
+
 import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
 import ListagemDeFaltas from "./pages/Listagemdefaltas";
