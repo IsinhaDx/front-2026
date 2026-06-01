@@ -1,9 +1,7 @@
 import { useState } from "react";
 
-function Requerimentos() {
-  const [menuAberto, setMenuAberto] = useState(false);
 
-  const requerimentos = [
+ const listaRequerimentos = [
     { tipo: "Revisão de Menção", data: "15/12/2025", situacao: "Indeferido" },
     {
       tipo: "Dispensa de Disciplina",
@@ -15,13 +13,10 @@ function Requerimentos() {
       data: "05/01/2024",
       situacao: "Deferido",
     },
-    { tipo: "Mudança de Turno", data: "10/10/2023", situacao: "Deferido" },
-    {
-      tipo: "Renovação de Matrícula",
-      data: "20/02/2023",
-      situacao: "Deferido",
-    },
   ];
+
+function Requerimentos() {
+  const [menuAberto, setMenuAberto] = useState(false);
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-200">
@@ -42,14 +37,12 @@ function Requerimentos() {
         </h2>
 
         <ul className="space-y-4 text-gray-700">
-          <li className="hover:text-black cursor-pointer">Dashboard</li>
-          <li className="hover:text-black cursor-pointer">Notas</li>
-          <li className="hover:text-black cursor-pointer">Faltas</li>
-          <li className="hover:text-black cursor-pointer">Boletos</li>
-          <li className="hover:text-black cursor-pointer font-semibold">
-            Requerimentos
-          </li>
-          <li className="hover:text-black cursor-pointer">Sair</li>
+          <li>Dashboard</li>
+          <li>Notas</li>
+          <li>Faltas</li>
+          <li>Boletos</li>
+          <li className="font-semibold">Requerimentos</li>
+          <li>Sair</li>
         </ul>
       </aside>
 
@@ -87,7 +80,7 @@ function Requerimentos() {
             </thead>
 
             <tbody>
-              {requerimentos.map((req, index) => (
+              {listaRequerimentos.map((req, index) => (
                 <tr key={index} className="border-t hover:bg-gray-50">
                   <td className="p-3">{req.tipo}</td>
                   <td className="p-3">{req.data}</td>

@@ -1,12 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/useAuth";
 import "./Login.css";
+
 
 import cap from "../assets/learn.svg";
 import InputMatricula from "../components/InputMatricula";
 import InputSenha from "../components/InputSenha";
 import InputSubmit from "../components/InputSubmit";
 
-function Login({ onLogin }) {
+function Login() {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [enviado, setEnviado] = useState(false);
@@ -14,9 +17,22 @@ function Login({ onLogin }) {
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
 
+  const { login } = useAuth();
+
+  const handleEntrar = () => {
+  login({
+    username: email,
+    password: senha,
+  });
+
+  navigate("/dashboard");
+};
+
   function validarEmail(valor) {
     return /\S+@\S+\.\S+/.test(valor);
   }
+  
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -44,10 +60,13 @@ function Login({ onLogin }) {
       valido = false;
     }
 
-    if (valido) {
-      onLogin();
+    
+
+    if (valido){
+      handleEntrar();
     }
   }
+
 
   return (
     <div className="login-container">

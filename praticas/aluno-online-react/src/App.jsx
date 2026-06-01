@@ -1,27 +1,45 @@
-
-
-import Login from "./pages/Login";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./pages/Login";
 
-
-import Login from "./pages/Login";
-
-
-
-import Layout from "./components/Layout";
 import Dashboard from "./pages/Dashboard";
-import ListagemDeFaltas from "./pages/Listagemdefaltas";
-import ListagemDeNotas from "./pages/Listagemdenotas";
-import ListagemDeBoletos from "./pages/Listagemdeboletos";
-import ListagemDeRequerimentos from "./pages/Listagemderequerimentos";
+import Faltas from "./pages/Faltas";
+import Notas from "./pages/Notas";
+import Boletos from "./pages/Boletos";
+import Requerimentos from "./pages/Requerimento";
+import Layout from "./layout/Layout";
+
+import { useAuth } from "./contexts/useAuth";
 
 function App() {
+  const { logado } = useAuth();
+
   return (
-    <Layout>
-      {/* Altere o componente aqui dentro para visualizar as outras páginas */}
-      <ListagemDeRequerimentos />
-    </Layout>
+    <Routes>
+      {/* Login */}
+      <Route
+        path="/"
+        element={
+          logado ? <Navigate to="/dashboard" /> : <Login />
+        }
+      />
+
+      {/* Rotas privadas */}
+      <Route
+        element={
+          logado ? <Layout /> : <Navigate to="/" />
+        }
+      >
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/faltas" element={<Faltas />} />
+        <Route path="/boletos" element={<Boletos />} />
+        <Route path="/notas" element={<Notas />} />
+        <Route
+          path="/requerimentos"
+          element={<Requerimentos />}
+        />
+      </Route>
+    </Routes>
   );
 }
 
