@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Routes, Route} from "react-router-dom"; 
 
 import Login from "./pages/Login";
@@ -29,33 +28,4 @@ function App () {
 }
 
 
-=======
-
-
-import Login from "./pages/Login";
-
-import Login from "./pages/Login";
-
-
-import Login from "./pages/Login";
-
-
-
-import Layout from "./components/Layout";
-import Dashboard from "./pages/Dashboard";
-import ListagemDeFaltas from "./pages/Listagemdefaltas";
-import ListagemDeNotas from "./pages/Listagemdenotas";
-import ListagemDeBoletos from "./pages/Listagemdeboletos";
-import ListagemDeRequerimentos from "./pages/Listagemderequerimentos";
-
-function App() {
-  return (
-    <Layout>
-      {/* Altere o componente aqui dentro para visualizar as outras páginas */}
-      <ListagemDeRequerimentos />
-    </Layout>
-  );
-}
-
->>>>>>> 9273755204a60aea853366cbbec4b8bf19ddea0d
 export default App;
