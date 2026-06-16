@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"
+import { listarRequerimento } from "../services/requerimentoService";
 
 
- const listaRequerimentos = [
-    { tipo: "Revisão de Menção", data: "15/12/2025", situacao: "Indeferido" },
-    {
-      tipo: "Dispensa de Disciplina",
-      data: "12/06/2025",
-      situacao: "Indeferido",
-    },
-    {
-      tipo: "Trancamento de Matrícula",
-      data: "05/01/2024",
-      situacao: "Deferido",
-    },
-  ];
+ 
+ 
 
 function Requerimentos() {
   const [menuAberto, setMenuAberto] = useState(false);
+  const navigate = useNavigate();
+  const [requerimentos, setRequerimentos] = useState([]);
+  useEffect (() => {
+  async function carregarDados() {
+    const dados = await listarRequerimento();
+    setRequerimentos(dados);
+  }
 
+  carregarDados();
+}, []);
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-200">
       <div className="md:hidden flex justify-end p-4">
@@ -80,15 +80,22 @@ function Requerimentos() {
             </thead>
 
             <tbody>
-              {listaRequerimentos.map((req, index) => (
+              {requerimentos.map((req, index) => (
                 <tr key={index} className="border-t hover:bg-gray-50">
                   <td className="p-3">{req.tipo}</td>
-                  <td className="p-3">{req.data}</td>
-                  <td className="p-3">{req.situacao}</td>
+                  <td className="p-3">{req.descricao}</td>
+                  <td className="p-3">{req.dataCriacao}</td>
                 </tr>
               ))}
             </tbody>
           </table>
+        </div>
+        <div>
+          <button className="flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition mt-4" 
+          onClick={() => navigate("/novoreq")} 
+          >
+            Novo Requerimento 
+          </button>
         </div>
       </main>
     </div>

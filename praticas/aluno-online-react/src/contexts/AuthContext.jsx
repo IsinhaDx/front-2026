@@ -1,27 +1,24 @@
-import { createContext, useState } from "react";
+// praticas/aluno-online-react/src/contexts/AuthProvider.jsx
+import { useState } from "react";
+import { AuthContext } from "./AuthContext";
 
-const AuthContext = createContext();
-
-function AuthProvider({ children }) {
+export function AuthProvider({ children }) {
   const [usuario, setUsuario] = useState({});
   const [logado, setLogado] = useState(false);
 
-  const login = () => {
-    //chama a API backend 
-    setUsuario({nome: "Vinicius"});
+  function login(dados) {
+    setUsuario(dados || { nome: "Usuário" });
     setLogado(true);
   }
 
-  const logout = () => {
+  function logout() {
     setUsuario({});
     setLogado(false);
   }
+
   return (
-  <AuthContext.Provider value={{logado, usuario, login, logout}}>
-    {children}
+    <AuthContext.Provider value={{ logado, usuario, login, logout }}>
+      {children}
     </AuthContext.Provider>
   );
 }
-
-export { AuthProvider };
-export { AuthContext };
