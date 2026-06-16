@@ -1,5 +1,8 @@
 import { useState } from "react";
+<<<<<<< HEAD
 import { useNavigate } from "react-router-dom";
+=======
+>>>>>>> 9273755204a60aea853366cbbec4b8bf19ddea0d
 import "./Login.css";
 
 import cap from "../assets/learn.svg";
@@ -7,7 +10,11 @@ import InputMatricula from "../components/InputMatricula";
 import InputSenha from "../components/InputSenha";
 import InputSubmit from "../components/InputSubmit";
 
+<<<<<<< HEAD
 function Login() {
+=======
+function Login({ onLogin }) {
+>>>>>>> 9273755204a60aea853366cbbec4b8bf19ddea0d
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [enviado, setEnviado] = useState(false);
@@ -15,6 +22,7 @@ function Login() {
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
 
+<<<<<<< HEAD
 
 
   function validarEmail(valor) {
@@ -22,6 +30,11 @@ function Login() {
   }
   
   const navigate = useNavigate();
+=======
+  function validarEmail(valor) {
+    return /\S+@\S+\.\S+/.test(valor);
+  }
+>>>>>>> 9273755204a60aea853366cbbec4b8bf19ddea0d
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -49,6 +62,7 @@ function Login() {
       valido = false;
     }
 
+<<<<<<< HEAD
     
 
     if (valido) {
@@ -57,6 +71,13 @@ function Login() {
   }
 
 
+=======
+    if (valido) {
+      onLogin();
+    }
+  }
+
+>>>>>>> 9273755204a60aea853366cbbec4b8bf19ddea0d
   return (
     <div className="login-container">
       <div className="login-box">
