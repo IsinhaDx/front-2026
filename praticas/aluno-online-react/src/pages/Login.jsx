@@ -17,17 +17,6 @@ function Login() {
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
 
-  const { login } = useAuth();
-
-  const handleEntrar = () => {
-  login({
-    username: email,
-    password: senha,
-  });
-
-  navigate("/dashboard");
-};
-
   function validarEmail(valor) {
     return /\S+@\S+\.\S+/.test(valor);
   }
@@ -62,8 +51,8 @@ function Login() {
 
     
 
-    if (valido){
-      handleEntrar();
+    if (valido) {
+      onLogin();
     }
   }
 
