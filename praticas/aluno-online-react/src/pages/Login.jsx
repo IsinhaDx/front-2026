@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/useAuth";
 import "./Login.css";
+
 
 import cap from "../assets/learn.svg";
 import InputMatricula from "../components/InputMatricula";
@@ -14,8 +16,6 @@ function Login() {
 
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
-
-
 
   function validarEmail(valor) {
     return /\S+@\S+\.\S+/.test(valor);
@@ -52,7 +52,7 @@ function Login() {
     
 
     if (valido) {
-      navigate("/dashboard");
+      onLogin();
     }
   }
 
